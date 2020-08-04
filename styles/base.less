@@ -1,0 +1,315 @@
+@import "syntax-variables";
+
+//Text editor generale.
+atom-text-editor {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color;
+  }
+
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
+
+  .invisible-character {
+    color: @syntax-invisible-character-color;
+  }
+
+  .gutter {
+    background-color: @syntax-gutter-background-color;
+    color: @syntax-gutter-text-color;
+
+    .line-number {
+      &.cursor-line {
+        background-color: @syntax-gutter-background-color-selected;
+        color: @syntax-gutter-text-color-selected;
+      }
+
+      &.cursor-line-no-selection {
+        color: @syntax-gutter-text-color-selected;
+      }
+    }
+  }
+
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: @grey-lighten-1;
+  }
+
+  .invisible {
+    color: @syntax-text-color;
+  }
+
+  .cursor {
+    color: @syntax-cursor-color;
+  }
+
+  .selection .region {
+    background-color: @syntax-selection-color;
+  }
+}
+
+//Commenti.
+.syntax--comment {
+  color: @cyan-darken-1;
+}
+
+.syntax--keyword {
+  color: @syntax-text-color;
+
+  &.syntax--control {
+    color: @grey;
+  }
+
+  &.syntax--operator {
+    color: @grey;
+  }
+
+  &.syntax--other.syntax--special-method {
+    color: @blue;
+  }
+
+  &.syntax--other.syntax--unit {
+    color: @yellow-darken-3;
+  }
+    &.syntax--other {
+        &.syntax--sql {
+            color: @indigo-lighten-1;
+        }
+    }
+}
+
+.syntax--storage {
+    color: @grey;
+}
+
+.syntax--constant {
+    color: @yellow-darken-1;
+    &.syntax--character.syntax--escape {
+        color: @yellow-darken-1;
+    }
+    &.syntax--numeric {
+        color: @yellow-darken-1;
+    }
+    &.syntax--other.syntax--color {
+        color: @yellow-darken-1;
+    }
+    &.syntax--other.syntax--symbol {
+        color: @red;
+    }
+    &.syntax--other.syntax--database-name,
+    &.syntax--other.syntax--table-name {
+        color: @syntax-text-color;
+    }
+}
+
+//Variabili.
+.syntax--variable {
+    color: @syntax-text-color;
+    &.syntax--interpolation {
+        color: darken(@green, 10%);
+    }
+    &.syntax--parameter.syntax--function {
+        color: @green;
+    }
+}
+//Errori.
+.syntax--invalid.syntax--illegal {
+    background-color: @red-darken-3;
+    color: @syntax-background-color;
+}
+//Stringhe.
+.syntax--string {
+    color: @blue;
+    &.syntax--regexp {
+        color: @cyan;
+        .syntax--source.syntax--ruby.syntax--embedded {
+            color: @orange;
+        }
+    }
+    &.syntax--other.syntax--link {
+        color: @red;
+    }
+    &.syntax--quoted.syntax--single.syntax--php {
+        color: @orange;
+    }
+}
+.syntax--single .syntax--string.syntax--php {
+    color: @orange;
+}
+//Simboli.
+.syntax--punctuation {
+    &.syntax--definition {
+        //Commenti.
+        &.syntax--comment {
+            color: @cyan-darken-1;
+        }
+        &.syntax--string:not(&.syntax--php),
+        &.syntax--variable,
+        &.syntax--parameters,
+        &.syntax--array {
+            color: @grey;
+        }
+        &.syntax--string.syntax--sql {
+            color: @blue;
+        }
+        &.syntax--bracket,
+        &.syntax--tag {
+            color: @grey;
+        }
+        &.syntax--heading,
+        &.syntax--identity {
+            color: @blue;
+        }
+        &.syntax--bold {
+            color: @orange-lighten-3;
+            font-weight: bold;
+        }
+        &.syntax--italic {
+            color: @purple;
+            font-style: italic;
+        }
+        &.syntax--function {
+            color: @grey;
+        }
+    }
+    &.syntax--section {
+        color: @grey;
+    }
+    &.syntax--terminator.syntax--expression,
+    &.syntax--terminator.syntax--statement {
+        color: @grey;
+    }
+    &.syntax--separator {
+        color: @grey;
+    }
+}
+.syntax--support {
+    &.syntax--class {
+        color: @orange-lighten-3;
+    }
+    &.syntax--function  {
+        color: @grey;
+        &.syntax--any-method {
+            color: @blue;
+        }
+    }
+    /*&.syntax--type.syntax--property-name {
+        color: @teal-lighten-1;
+    }*/
+}
+
+.syntax--entity {
+    &.syntax--name.syntax--function {
+        color: @indigo-lighten-1;
+    }
+    &.syntax--name.syntax--type {
+        color: @orange-lighten-3;
+        text-decoration: underline;
+    }
+    &.syntax--other.syntax--inherited-class {
+        color: @green;
+    }
+    &.syntax--name.syntax--class, &.syntax--name.syntax--type.syntax--class {
+        color: @orange-lighten-3;
+    }
+    &.syntax--name.syntax--section {
+        color: @blue;
+    }
+    //Tag.
+    &.syntax--name.syntax--tag {
+        color: @grey;
+    }
+    //Attributi.
+    &.syntax--other.syntax--attribute-name {
+        color: @indigo-lighten-1;
+        //ID.
+        &.syntax--id {
+            color: @teal-lighten-1;
+        }
+    }
+}
+
+.syntax--meta {
+  &.syntax--class {
+    color: @syntax-text-color;
+  }
+
+  &.syntax--link:not(&.syntax--separator) {
+    color: @grey;
+  }
+
+  &.syntax--require {
+    color: @blue;
+  }
+  &.syntax--delimiter,
+  &.syntax--selector {
+    color: @grey;
+  }
+
+  &.syntax--separator {
+    background-color: @grey;
+    color: @syntax-text-color;
+  }
+}
+
+.syntax--none {
+  color: @syntax-text-color;
+}
+
+.syntax--markup {
+  &.syntax--bold {
+    color: @orange;
+    font-weight: bold;
+  }
+
+  &.syntax--changed {
+    color: @purple;
+  }
+
+  &.syntax--deleted {
+    color: @red;
+  }
+
+  &.syntax--italic {
+    color: @purple;
+    font-style: italic;
+  }
+
+  &.syntax--heading .syntax--punctuation.syntax--definition.syntax--heading {
+    color: @blue;
+  }
+
+  &.syntax--inserted {
+    color: @green;
+  }
+
+  &.syntax--list {
+    color: @red;
+  }
+
+  &.syntax--quote {
+    color: @orange;
+  }
+
+  &.syntax--raw.syntax--inline {
+    color: @green;
+  }
+}
+
+.syntax--source.syntax--gfm .syntax--markup {
+  -webkit-font-smoothing: auto;
+  &.syntax--heading {
+    color: @green;
+  }
+}
+
+
+// Mini editor
+
+atom-text-editor[mini] .scroll-view {
+  padding-left: 1px;
+}
